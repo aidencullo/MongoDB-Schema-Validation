@@ -12,7 +12,8 @@ app.use(express.json());
 // from being called again, since we've already
 // created this collection.
 async () => {
-  await db.createCollection("learners", {
+  await db.command({
+    collMod: "learners",
     // Pass the validator object
     validator: {
       // Use the $jsonSchema operator
